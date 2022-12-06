@@ -1,0 +1,327 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:600, 300");
+
+*,
+*::after,
+*::before {
+    outline: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@mixin maxWidth($value) {
+	@media (max-width: $value) {
+		@content;
+	}
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Open sans', sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.rule {
+    margin: 0 50px 0 0;
+
+    &__content {
+        display: flex;
+    }
+
+    &__color {
+        width: 50px;
+        height: 50px;
+        margin: 0 20px 20px 0;
+    }
+
+    .color-1 {
+        background-color: #16a085;
+    }
+
+    .color-2 {
+        background-color: #2980b9;
+    }
+
+    .color-3 {
+        background-color: #34495e;
+    }
+
+    .color-4 {
+        background-color: #f39c12;
+    }
+
+    .color-5 {
+        background-color: #d35400;
+    }
+
+    .color-6 {
+        background-color: #c0392b;
+    }
+}
+
+.wheel {
+    width: 312px;
+    height: 312px;
+    border-radius: 50%;
+    border: solid 6px #fff;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    &__inner {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        transition: cubic-bezier(0.19, 1, 0.22, 1) 5s;
+    }
+
+    &__sec {
+        position: absolute;
+        top: 0;
+        left: 62px;
+        width: 0;
+        height: 0;
+        border: solid;
+        border-width: 150px 88px 0;
+        border-color: transparent;
+        transform-origin: 50% 100%;
+
+        &:nth-child(1) {
+
+            background-image: url(./hinh_nen_raz_chien_than_muay_thai_1200x675.jpg);
+            background-size: cover;
+            background-origin: border-box;
+        }
+
+        &:nth-child(2) {
+            background-image: url(./cach-nhan-skin-tulen-chi-ton-kiem-tien-bac-sss-cuc-de-2.jpg);
+            clip-path: polygon(100% 0, -2% 0, 51% 100%);
+            background-size: cover;
+            background-origin: border-box;
+            background-position-x: center;
+            transform: rotate(60deg);
+
+        }
+
+        &:nth-child(3) {
+            background-image: url(./photo-1-16291967106171950643143.webp);
+            clip-path: polygon(100% 0, -2% 0, 51% 100%);
+            background-size: cover;
+            background-origin: border-box;
+            background-position-x: center;
+            transform: rotate(120deg)
+        }
+
+        &:nth-child(4) {
+            background-image: url(./airi-bich-hai-thanh-nu-1418.jpg);
+            clip-path: polygon(100% 0, -2% 0, 51% 100%);
+            background-size: cover;
+            background-origin: border-box;
+            transform: rotate(180deg);
+            background-position-x: center
+        }
+
+        &:nth-child(5) {
+            background-image: url(./he-lo-trang-phuc-lauriel-thu-nguyen-ve-than-moi-nhat-2.png);
+            clip-path: polygon(100% 0, -2% 0, 51% 100%);
+            background-size: cover;
+            background-origin: border-box;
+            background-position-x: center;
+            transform: rotate(240deg)
+        }
+
+        &:nth-child(6) {
+            background-image: url(./hinh_nen_butterfly_phuong_cuu_thien_1200x675.jpg);
+            clip-path: polygon(100% 0, -2% 0, 51% 100%);
+            background-size: cover;
+            background-origin: border-box;
+            background-position-x: center;
+            transform: rotate(300deg)
+        }
+    }
+
+    &__text {
+        margin: 70px 0 0 70px;
+    }
+
+    &__arrow {
+        width: 70px;
+        height: 70px;
+        background: #fff;
+        position: absolute;
+        top: 121px;
+        left: 115px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Open sans', sans-serif;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: solid;
+            border-width: 0 10px 20px;
+            border-color: transparent;
+            border-bottom-color: #fff;
+            top: -15px;
+            left: 25px;
+        }
+    }
+
+    &__button {
+        width: 60px;
+        height: 60px;
+        background-color: lightgray;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: 600;
+        font-size: 18px;
+
+        &:hover {
+            color: #27AE60;
+        }
+
+        &:active {
+            border: solid 3px rgba(0, 0, 0, 0.1);
+            font-size: 15px;
+        }
+    }
+}
+
+.popup {
+    position: fixed;
+    width: 30vw;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -110%);
+    background: #fff;
+    box-shadow: 0 4px 9px 0 rgba($color: #000000, $alpha: 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    transition: all 0.5s;
+    opacity: 0;
+
+    &.active {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    &__emotion {
+        color: #f39c12;
+        text-align: center;
+        font-size: 30px;
+        margin: 0 0 25px 0;
+    }
+
+    &__note {
+        text-align: center;
+    }
+}
+
+.congratulation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.2);
+    display: none;
+
+    &__container {
+        width: 40vw;
+        padding: 30px;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #c0392b;
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &:hover {
+            transform: rotate(360deg);
+        }
+    }
+
+    &__emotion {
+        color: #f39c12;
+        text-align: center;
+        margin: 0 0 20px 0;
+    }
+
+    &__note {
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+.btn {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 20px;
+
+        img {
+            width: 16px;
+        }
+       
+        
+    }
+} 
+.garena{
+    background-color: #16a085;
+    border-radius: 5px;
+}
+.face{
+    background-color: #2980b9;
+    border-radius: 5px;
+    i{
+        margin-right:6px;
+    }
+}
+@include maxWidth(820px){
+    .rule{
+        margin: 0;
+    }
+    .congratulation__container{
+        width: 90vw;
+    }
+}
+@include maxWidth(468px){
+    .congratulation__note{
+        font-size: 14px;
+    }
+    .btn a{
+        font-size: 8px
+    }
+}
